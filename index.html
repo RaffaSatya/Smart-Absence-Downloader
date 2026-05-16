@@ -294,21 +294,97 @@ footer {
   color: var(--txt-2);
 }
 
-/* ANIMASI FADE IN */
-.fade-up {
-  opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s ease forwards;
-}
-.d1 { animation-delay: 0.1s; }
-.d2 { animation-delay: 0.2s; }
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
+/* ==========================================================================
+   PERBAIKAN MEDIA QUERY MOBILE (FOKUS UTAMA UNTUK RATA TENGAH & ANTI OVERFLOW)
+   ========================================================================== */
 @media (max-width: 768px) {
-  .platform-flex, .contact-wrap { flex-direction: column; align-items: stretch; gap: 32px; }
-  .nav-links { display: none; }
-  .hero { padding: 70px 0 50px; }
-  .footer-inner { flex-direction: column; text-align: center; }
+  /* Navbar Rata Tengah */
+  .nav-inner {
+    justify-content: center;
+  }
+  
+  /* Layout Utama Menjadi Kolom & Rata Tengah */
+  .platform-flex, .contact-wrap {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+  
+  /* Judul Section & Deskripsi Rata Tengah */
+  .platform-left, .contact-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .platform-right, .contact-right {
+    width: 100%;
+  }
+
+  /* Grid Platform & Preview Menyesuaikan Lebar Mobile */
+  .platform-cards {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  
+  .preview-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Isi Card Platform Rata Tengah */
+  .plt-card {
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+  }
+  
+  .plt-badge {
+    align-self: center;
+  }
+
+  /* Isi Card Preview Aplikasi Rata Tengah */
+  .prev-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .prev-tag {
+    align-self: center;
+  }
+
+  /* Card Kontak Pengembang Rata Tengah */
+  .contact-card {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+  }
+  
+  .c-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Footer Rata Tengah */
+  .nav-links { 
+    display: none; 
+  }
+  .hero { 
+    padding: 70px 0 50px; 
+  }
+  .footer-inner { 
+    flex-direction: column; 
+    text-align: center; 
+    gap: 12px; 
+  }
 }
 </style>
 </head>
@@ -320,7 +396,7 @@ footer {
 <nav>
   <div class="container nav-inner">
     <a href="#" class="nav-logo">
-      <img src="assets/logo.png" alt="Logo Smart Absence" style="width: 36px; height: 36px; object-fit: contain;">
+      <img src="assets/logo.png" alt="Logo Smart Absence" style="width: 50px; height: 50px; object-fit: contain;">
       <span class="nav-logo-text">Smart <span>Absence</span></span>
     </a>
     <div class="nav-links">
@@ -351,21 +427,23 @@ footer {
       <div class="platform-left">
         <p class="section-eyebrow">Platform</p>
         <h2 class="section-heading">Mendukung Multi-Platform</h2>
-        <p class="section-sub">Akses sistem dengan mudah melalui aplikasi Android khusus pengguna mobile, atau kelola dashboard penuh langsung dari browser Anda.</p>
+        <p class="section-sub">Akses sistem dengan mudah melalui aplikasi Android khusus pengguna mobile, atau kelola dashboard penuh langsung dari browser.</p>
       </div>
       <div class="platform-right">
         <div class="platform-cards">
           <div class="plt-card">
+            <div class="plt-icon">📱</div>
             <div class="plt-name">Android App</div>
-            <div class="plt-detail">Lakukan scan absensi QR, verifikasi lokasi, dan kirim status kehadiran instan langsung dari handphone.</div>
+            <div class="plt-detail">Lakukan absensi dengan hanya klik tombol, sistem akan verifikasi lokasi, upload foto, dan kirim status kehadiran instan langsung dari handphone.</div>
             <span class="plt-badge plt-badge-android">✓ Aplikasi Utama</span>
             <a href="assets/smartabsence.apk" download="smartabsence.apk" class="plt-btn">Download APK</a>
           </div>
           <div class="plt-card">
+            <div class="plt-icon">🌐</div>
             <div class="plt-name">Web App</div>
-            <div class="plt-detail">Kelola data master, lihat statistik absensi, rekap laporan bulanan, dan konfigurasi sistem tanpa instalasi.</div>
+            <div class="plt-detail">Kelola data absensi, lihat statistik absensi, rekap laporan bulanan, dan konfigurasi sistem tanpa instalasi.</div>
             <span class="plt-badge plt-badge-web">✓ Siap Diakses</span>
-            <a href="https://app.absenku.id" target="_blank" class="plt-btn plt-btn-web">Buka Web App</a>
+            <a href="https://roblox.com" target="_blank" class="plt-btn plt-btn-web">Buka Web App</a>
           </div>
         </div>
       </div>
@@ -391,7 +469,7 @@ footer {
         </div>
         <div class="prev-meta">
           <span class="prev-tag">Dashboard</span>
-          <div class="prev-title">Rekap Kehadiran Utama</div>
+          <div class="prev-title">Absensi</div>
           <p class="prev-desc">Halaman utama untuk siswa yang digunakan untuk pengabsenan secara personal dengan verifikasi siswa tingkat lanjut.</p>
         </div>
       </div>
@@ -414,7 +492,7 @@ footer {
         <div class="prev-meta">
           <span class="prev-tag">Manajemen</span>
           <div class="prev-title">Kelola Laporan &amp; Rekap</div>
-          <p class="prev-desc">Menu khusus untuk memantau siswa, mengelola, menyunting, serta mengeksport riwayat absensi siswa/i ke dalam format siap pakai.</p>
+          <p class="prev-desc">Menu yang digunakan untuk memantau data kehadiran siswa/i, mengelola, menyunting, serta mengeksport riwayat absensi kelas ke dalam format siap pakai.</p>
         </div>
       </div>
 
@@ -457,7 +535,6 @@ footer {
 </footer>
 
 <script>
-// Efek interaksi scroll halus untuk card aplikasi
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
